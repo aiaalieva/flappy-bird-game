@@ -7,6 +7,8 @@ var mainState = {
         game.load.image('pipe', 'assets/pipe.png');
 
         game.load.audio('jump', 'assets/jump.wav');
+
+        game.load.audio('die', 'assets/die.wav');
     },
 
     create: function() {
@@ -44,6 +46,8 @@ var mainState = {
         this.bird.anchor.setTo(-0.2, 0.5);
 
         this.jumpSound = game.add.audio('jump');
+
+        this.dieSound = game.add.audio('die');
     },
 
     update: function() {
@@ -119,6 +123,8 @@ var mainState = {
 
         // Set the alive property of the bird to false
         this.bird.alive = false;
+
+        this.dieSound.play();
 
         // Prevent new pipes from appearing
         game.time.events.remove(this.timer);
